@@ -22,7 +22,7 @@
     .container {
       width: 100%;
       max-width: var(--max-width);
-      padding: 0 1rem;
+      padding: 0 1rem 2rem;
     }
 
     header {
@@ -39,6 +39,31 @@
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       letter-spacing: 0.5px;
     }
+
+    /* About section */
+    #about {
+      background: #ffffff;
+      margin: 1.5rem 0 0;
+      padding: 1.25rem 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(16,24,40,0.04);
+    }
+
+    #about h2 {
+      margin-top: 0;
+      color: #0f172a;
+      font-size: 1.25rem;
+    }
+
+    #about p {
+      color: #111827;
+      line-height: 1.6;
+      margin: 0.5rem 0 0;
+    }
+
+    @media (min-width: 640px) {
+      #about p { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -46,6 +71,13 @@
     <header>
       <h1>Maddie Greb</h1>
     </header>
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>
+        Hello I am Maddie and I'm from Indianapolis. My major is Exercise Science on the Pre-PA track. I plan on joining multiple clubs while at IU such as the American Medical Women's Association to learn more about my major and in order to plan my future. In my free time I enjoy shopping, hanging with friends, cooking, going to concerts, and traveling. This past summer I went on a trip with my dad to Barcelona, Spain and Sardinia which was fun because I got to try lots of new foods. At IU some things I plan on doing are joining greek life and rushing in the winter, studying abroad, and taking new types of classes. While in high school reading and writing were not my favorite subjects to learn about. I find learning other subjects like math or science to be more interesting to me, but I try my best to read in my free time. In high school I took AP literature and AP Language which definitely improved my writing skills over time. In those classes we would read poems, articles, passages, and books in order to be prepared for the AP tests where we had to write three essays. The skills I learned in these classes to be able to pass the test will carry over into college and W131.
+      </p>
+    </section>
   </div>
 </body>
 </html>
