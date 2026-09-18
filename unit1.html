@@ -88,11 +88,61 @@
       margin: 0.5rem 0 0;
     }
 
+    .lens-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .lens-card {
+      margin: 0;
+    }
+
+    .lens-card a {
+      display: block;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .lens-card a:hover .lens-preview,
+    .lens-card a:focus .lens-preview {
+      border-color: var(--header-bg);
+      box-shadow: 0 0 0 3px rgba(233, 139, 170, 0.2);
+    }
+
+    .lens-preview {
+      display: block;
+      width: 100%;
+      height: 220px;
+      border: 1px solid #f1c3d2;
+      border-radius: 6px;
+      background: #fdf5f8;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lens-card figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
     .paragraph-space {
       min-height: 7rem;
       border: 1px dashed #e98baa;
       border-radius: 6px;
       margin-top: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .lens-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .lens-preview {
+        height: 280px;
+      }
     }
   </style>
 </head>
@@ -116,6 +166,36 @@
 
       <section id="blog">
         <h2>Blog: A Phenomenon in My World</h2>
+
+        <div class="lens-gallery" aria-label="Lens images">
+          <figure class="lens-card">
+            <a href="lens%20%231;%20roots%20of%20tree.pdf" target="_blank" rel="noopener" aria-label="Open Lens 1: Roots of Tree PDF in a new tab">
+              <object class="lens-preview" data="lens%20%231;%20roots%20of%20tree.pdf" type="application/pdf" aria-label="Preview of Lens 1: Roots of Tree PDF">
+                <span>Open Lens 1: Roots of Tree PDF</span>
+              </object>
+              <figcaption>Lens #1: Roots of Tree</figcaption>
+            </a>
+          </figure>
+
+          <figure class="lens-card">
+            <a href="patterns;%20tree%20branches.pdf" target="_blank" rel="noopener" aria-label="Open Patterns: Tree Branches PDF in a new tab">
+              <object class="lens-preview" data="patterns;%20tree%20branches.pdf" type="application/pdf" aria-label="Preview of Patterns: Tree Branches PDF">
+                <span>Open Patterns: Tree Branches PDF</span>
+              </object>
+              <figcaption>Patterns: Tree Branches</figcaption>
+            </a>
+          </figure>
+
+          <figure class="lens-card">
+            <a href="phenomenon;%20trunk%20of%20tree.pdf" target="_blank" rel="noopener" aria-label="Open Phenomenon: Trunk of Tree PDF in a new tab">
+              <object class="lens-preview" data="phenomenon;%20trunk%20of%20tree.pdf" type="application/pdf" aria-label="Preview of Phenomenon: Trunk of Tree PDF">
+                <span>Open Phenomenon: Trunk of Tree PDF</span>
+              </object>
+              <figcaption>Phenomenon: Trunk of Tree</figcaption>
+            </a>
+          </figure>
+        </div>
+
         <div class="paragraph-space" aria-label="Space for paragraphs"></div>
       </section>
     </main>
