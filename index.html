@@ -6,7 +6,7 @@
   <title>Maddie Greb</title>
   <style>
     :root {
-      --header-bg: #1e90ff; /* DodgerBlue */
+      --header-bg: #e98baa;
       --header-color: #ffffff;
       --max-width: 900px;
     }
@@ -14,7 +14,7 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f7f9fc;
+      background: #fdf5f8;
       display: flex;
       justify-content: center;
     }
@@ -28,7 +28,7 @@
     header {
       background: var(--header-bg);
       color: var(--header-color);
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1.25rem;
       text-align: center;
       border-radius: 0 0 8px 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -38,6 +38,31 @@
       margin: 0;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin: 0.5rem 0 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--header-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
     }
 
     /* About section */
@@ -70,14 +95,22 @@
   <div class="container">
     <header>
       <h1>Maddie Greb</h1>
+      <p>English student at IU</p>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <section id="about">
-      <h2>About me</h2>
-      <p>
-        Hello I am Maddie and I'm from Indianapolis. My major is Exercise Science on the Pre-PA track. I plan on joining multiple clubs while at IU such as the American Medical Women's Association to learn more about my major and in order to plan my future. In my free time I enjoy shopping, hanging with friends, cooking, going to concerts, and traveling. This past summer I went on a trip with my dad to Barcelona, Spain and Sardinia which was fun because I got to try lots of new foods. At IU some things I plan on doing are joining greek life and rushing in the winter, studying abroad, and taking new types of classes. While in high school reading and writing were not my favorite subjects to learn about. I find learning other subjects like math or science to be more interesting to me, but I try my best to read in my free time. In high school I took AP literature and AP Language which definitely improved my writing skills over time. In those classes we would read poems, articles, passages, and books in order to be prepared for the AP tests where we had to write three essays. The skills I learned in these classes to be able to pass the test will carry over into college and W131.
-      </p>
-    </section>
+    <main>
+      <section id="about">
+        <h2>About me</h2>
+        <p>
+          Hello I am Maddie and I'm from Indianapolis. My major is Exercise Science on the Pre-PA track. I plan on joining multiple clubs while at IU such as the American Medical Women's Association to [...]
+        </p>
+      </section>
+    </main>
   </div>
 </body>
 </html>
