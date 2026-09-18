@@ -84,7 +84,7 @@
     #blog p {
       color: #111827;
       line-height: 1.6;
-      margin: 0.5rem 0 0;
+      margin: 1rem 0 0;
     }
 
     .lens-gallery {
@@ -133,14 +133,6 @@
       font-weight: 600;
       text-align: center;
       color: #111827;
-    }
-
-    .paragraph-space {
-      min-height: 7rem;
-      border: 1px dashed #e98baa;
-      border-radius: 6px;
-      margin-top: 1rem;
-      background: #fffafc;
     }
 
     .lightbox {
@@ -234,7 +226,20 @@
           </figure>
         </div>
 
-        <div class="paragraph-space" aria-label="Space for paragraphs"></div>
+        <h3>2. Developing My Phenomenon</h3>
+        <p>My original phenomenon was college students attempting a consistent and active lifestyle while balancing social life, sleep, and diet, which creates patterns of unhealthy behaviors. I have now attempted to make it more specific: college students seem to perform healthy habits like exercising, but unhealthy and their true lifestyle choices, including poor sleep, stress, and diet, remain neglected as they balance college life. What initially drew me to this phenomenon was the fact that I also can relate to this issue, because it can be difficult to manage a healthy lifestyle when there are people and behaviors around you that can influence you to do otherwise.</p>
+
+        <h3>3. My Strongest Pattern</h3>
+        <p>My strongest pattern was the environment that students surround themselves in, and I realized this from simply noticing my friends' and other students' day-to-day lives, which consisted of walking around campus, going to the gym, playing sports, etc. However, I have also noticed, even after only being here a month, that this isn’t the full truth of some students' way of living. I have seen students skipping meals, getting no sleep, and even skipping class to prioritize other activities. All of these unhealthy habits can suggest that being physically fit does not mean a student necessarily has a balanced or sustainable lifestyle.</p>
+
+        <h3>4. Assumptions and the “So What?”</h3>
+        <p>Some assumptions that I have made are that students who seem active are actually struggling and that it is just less visible. I’ve assumed that exercise is students' top priority over other aspects of health, such as sleep or stress management. I’m assuming that most students realize that they chose unhealthier habits, specifically on the weekends, but continue to ignore or do nothing about it. The “so what” is what happens when students continue to ignore unhealthy habits and appear physically fit but forget to maintain their overall health. How are students prioritizing certain aspects of health over others? And why do students only emphasize exercise rather than things like sleep or nutrition?</p>
+
+        <h3>5. Cultural Artifacts</h3>
+        <p>Some popular cultural artifacts I have selected are Instagram vs. Reality, TikTok’s version of an “it girl,” and the <em>Barbie</em> movie. The strongest one that I have selected would be Instagram vs. Reality, which simply means that people post photos that they typically look good in or try hard to achieve but never show their struggle or true lifestyle. This can expand the current phenomenon by showing that students won’t post what their lifestyle looks like and that they can keep certain parts hidden on social media to create a better image for themselves.</p>
+
+        <h3>6. Working Thesis</h3>
+        <p>While college students’ physical lifestyles could generally prioritize their health, they could also be putting up a facade, while their unhealthy habits are being hidden and are challenging their overall well-being.</p>
       </section>
     </main>
   </div>
@@ -250,6 +255,11 @@
     const lightboxImage = document.getElementById('lightbox-image');
     const closeButton = document.querySelector('.lightbox-close');
 
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+    }
+
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
         lightboxImage.src = trigger.dataset.image;
@@ -257,15 +267,17 @@
       });
     });
 
-    closeButton.addEventListener('click', () => {
-      lightbox.classList.remove('open');
-      lightboxImage.src = '';
-    });
+    closeButton.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', (event) => {
       if (event.target === lightbox) {
-        lightbox.classList.remove('open');
-        lightboxImage.src = '';
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
       }
     });
   </script>
