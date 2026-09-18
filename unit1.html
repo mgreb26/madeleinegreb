@@ -81,7 +81,6 @@
       font-size: 1.25rem;
     }
 
-    #unit-1 p,
     #blog p {
       color: #111827;
       line-height: 1.6;
@@ -99,33 +98,41 @@
       margin: 0;
     }
 
-    .lens-card a {
+    .lens-card button {
+      background: none;
+      border: none;
+      padding: 0;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
       display: block;
-      color: #111827;
-      text-decoration: none;
     }
 
-    .lens-card a:hover .lens-preview,
-    .lens-card a:focus .lens-preview {
-      border-color: var(--header-bg);
+    .lens-card button:hover .lens-image,
+    .lens-card button:focus .lens-image {
+      transform: scale(1.02);
       box-shadow: 0 0 0 3px rgba(233, 139, 170, 0.2);
     }
 
-    .lens-preview {
+    .lens-image {
       display: block;
       width: 100%;
-      height: 220px;
+      height: 240px;
+      object-fit: cover;
       border: 1px solid #f1c3d2;
-      border-radius: 6px;
+      border-radius: 8px;
       background: #fdf5f8;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .lens-card figcaption {
+    .lens-caption {
+      display: block;
       margin-top: 0.5rem;
       font-size: 0.9rem;
       font-weight: 600;
       text-align: center;
+      color: #111827;
     }
 
     .paragraph-space {
@@ -133,6 +140,43 @@
       border: 1px dashed #e98baa;
       border-radius: 6px;
       margin-top: 1rem;
+      background: #fffafc;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 24, 39, 0.8);
+      z-index: 20;
+      padding: 1rem;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.25rem;
+      cursor: pointer;
     }
 
     @media (max-width: 700px) {
@@ -140,7 +184,7 @@
         grid-template-columns: 1fr;
       }
 
-      .lens-preview {
+      .lens-image {
         height: 280px;
       }
     }
@@ -169,30 +213,24 @@
 
         <div class="lens-gallery" aria-label="Lens images">
           <figure class="lens-card">
-            <a href="lens%20%231;%20roots%20of%20tree.pdf" target="_blank" rel="noopener" aria-label="Open Lens 1: Roots of Tree PDF in a new tab">
-              <object class="lens-preview" data="lens%20%231;%20roots%20of%20tree.pdf" type="application/pdf" aria-label="Preview of Lens 1: Roots of Tree PDF">
-                <span>Open Lens 1: Roots of Tree PDF</span>
-              </object>
-              <figcaption>Lens #1: Roots of Tree</figcaption>
-            </a>
+            <button type="button" class="image-trigger" data-image="lens%20%231;%20roots%20of%20tree.jpg" aria-label="Open image 1 in larger view">
+              <img src="lens%20%231;%20roots%20of%20tree.jpg" alt="Lens 1: Roots of Tree" class="lens-image" />
+              <span class="lens-caption">Lens #1: Roots of Tree</span>
+            </button>
           </figure>
 
           <figure class="lens-card">
-            <a href="patterns;%20tree%20branches.pdf" target="_blank" rel="noopener" aria-label="Open Patterns: Tree Branches PDF in a new tab">
-              <object class="lens-preview" data="patterns;%20tree%20branches.pdf" type="application/pdf" aria-label="Preview of Patterns: Tree Branches PDF">
-                <span>Open Patterns: Tree Branches PDF</span>
-              </object>
-              <figcaption>Patterns: Tree Branches</figcaption>
-            </a>
+            <button type="button" class="image-trigger" data-image="patterns;%20tree%20branches.jpg" aria-label="Open image 2 in larger view">
+              <img src="patterns;%20tree%20branches.jpg" alt="Patterns: Tree Branches" class="lens-image" />
+              <span class="lens-caption">Patterns: Tree Branches</span>
+            </button>
           </figure>
 
           <figure class="lens-card">
-            <a href="phenomenon;%20trunk%20of%20tree.pdf" target="_blank" rel="noopener" aria-label="Open Phenomenon: Trunk of Tree PDF in a new tab">
-              <object class="lens-preview" data="phenomenon;%20trunk%20of%20tree.pdf" type="application/pdf" aria-label="Preview of Phenomenon: Trunk of Tree PDF">
-                <span>Open Phenomenon: Trunk of Tree PDF</span>
-              </object>
-              <figcaption>Phenomenon: Trunk of Tree</figcaption>
-            </a>
+            <button type="button" class="image-trigger" data-image="phenomenon;%20trunk%20of%20tree.jpg" aria-label="Open image 3 in larger view">
+              <img src="phenomenon;%20trunk%20of%20tree.jpg" alt="Phenomenon: Trunk of Tree" class="lens-image" />
+              <span class="lens-caption">Phenomenon: Trunk of Tree</span>
+            </button>
           </figure>
         </div>
 
@@ -200,5 +238,36 @@
       </section>
     </main>
   </div>
+
+  <div class="lightbox" id="lightbox" aria-label="Expanded image viewer">
+    <button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button>
+    <img id="lightbox-image" src="" alt="Expanded view" />
+  </div>
+
+  <script>
+    const triggers = document.querySelectorAll('.image-trigger');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.lightbox-close');
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        lightboxImage.src = trigger.dataset.image;
+        lightbox.classList.add('open');
+      });
+    });
+
+    closeButton.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        lightbox.classList.remove('open');
+        lightboxImage.src = '';
+      }
+    });
+  </script>
 </body>
 </html>
