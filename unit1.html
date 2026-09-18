@@ -65,7 +65,8 @@
       text-decoration: underline;
     }
 
-    #unit-1 {
+    #unit-1,
+    #blog {
       background: #ffffff;
       margin: 1.5rem 0 0;
       padding: 1.25rem 1.25rem;
@@ -73,16 +74,25 @@
       box-shadow: 0 1px 4px rgba(16,24,40,0.04);
     }
 
-    #unit-1 h2 {
+    #unit-1 h2,
+    #blog h2 {
       margin-top: 0;
       color: #0f172a;
       font-size: 1.25rem;
     }
 
-    #unit-1 p {
+    #unit-1 p,
+    #blog p {
       color: #111827;
       line-height: 1.6;
       margin: 0.5rem 0 0;
+    }
+
+    .paragraph-space {
+      min-height: 7rem;
+      border: 1px dashed #e98baa;
+      border-radius: 6px;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -102,6 +112,11 @@
     <main>
       <section id="unit-1">
         <h2>Unit 1</h2>
+      </section>
+
+      <section id="blog">
+        <h2>Blog: A Phenomenon in My World</h2>
+        <div class="paragraph-space" aria-label="Space for paragraphs"></div>
       </section>
     </main>
   </div>
